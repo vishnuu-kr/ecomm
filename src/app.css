@@ -825,6 +825,10 @@ main {
   padding-top: var(--space-4xl);
   padding-bottom: var(--space-4xl);
   border-top: 1px solid var(--color-border);
+  margin-top: -4rem; /* Overlap effect */
+  background: var(--color-background);
+  position: relative;
+  z-index: 2;
 }
 
 .philosophy-grid {

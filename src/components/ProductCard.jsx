@@ -1,14 +1,22 @@
 import { Link } from 'react-router-dom';
 import { Heart } from 'lucide-react';
 import { useStore } from '../context/StoreContext';
+import { useTilt } from '../hooks/useTilt';
 
 export default function ProductCard({ product, className = '' }) {
   const { state, dispatch } = useStore();
   const isWished = state.wishlist.some(i => i.id === product.id);
+  const tilt = useTilt();
 
   return (
     <div className={`product-card ${className}`}>
-      <div className="double-bezel" style={{ position: 'relative' }}>
+      <div 
+        ref={tilt.ref}
+        className="double-bezel" 
+        style={{ ...tilt.style, position: 'relative' }}
+        onMouseMove={tilt.onMouseMove}
+        onMouseLeave={tilt.onMouseLeave}
+      >
         <div className="double-bezel-inner">
           <Link to={`/product/${product.id}`}>
             <img src={product.image} alt={product.name} loading="lazy" />

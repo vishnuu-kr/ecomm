@@ -20,8 +20,17 @@ function useScrollReveal() {
 
 export default function Home({ onOpenCart }) {
   const pageRef = useScrollReveal();
+  const [scrollY, setScrollY] = useState(0);
   const bestsellers = products.filter(p => p.isBestseller);
   const newArrivals = products.filter(p => p.isNew);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
     <div ref={pageRef}>
@@ -118,7 +127,7 @@ export default function Home({ onOpenCart }) {
       {/* EXCLUSIVE OFFER */}
       <section className="container section">
         <div className="offer-banner reveal">
-          <div className="offer-banner-bg">
+          <div className="offer-banner-bg" style={{ transform: `translate3d(0, ${scrollY * 0.1}px, 0)` }}>
             <img src="/images/offer-banner.png" alt="Aura Exclusive Sale" />
           </div>
           <div className="offer-banner-content">

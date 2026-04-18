@@ -96,13 +96,13 @@ img { max-width: 100%; height: auto; display: block; }
 /* ========= SCROLL REVEAL SYSTEM ========= */
 .reveal {
   opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s var(--ease-smooth), transform 0.8s var(--ease-smooth);
+  transform: translateY(40px) scale(0.98);
+  transition: opacity 1s var(--ease-smooth), transform 1s var(--ease-smooth);
 }
 
 .reveal.visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
 }
 
 .reveal-delay-1 { transition-delay: 100ms; }
