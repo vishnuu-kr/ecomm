@@ -20,17 +20,8 @@ function useScrollReveal() {
 
 export default function Home({ onOpenCart }) {
   const pageRef = useScrollReveal();
-  const [scrollY, setScrollY] = useState(0);
   const bestsellers = products.filter(p => p.isBestseller);
   const newArrivals = products.filter(p => p.isNew);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   return (
     <div ref={pageRef}>
@@ -125,19 +116,22 @@ export default function Home({ onOpenCart }) {
       </section>
 
       {/* EXCLUSIVE OFFER */}
-      <section className="container section">
+      <section className="container" style={{ paddingTop: 'clamp(3rem, 8vw, 6rem)', paddingBottom: 0 }}>
         <div className="offer-banner reveal">
-          <div className="offer-banner-bg" style={{ transform: `translate3d(0, ${scrollY * 0.1}px, 0)` }}>
+          <div className="offer-banner-bg">
             <img src="/images/offer-banner.png" alt="Aura Exclusive Sale" />
           </div>
           <div className="offer-banner-content">
-            <span className="eyebrow" style={{ color: 'var(--color-bg)' }}>Private Sale</span>
+            <span className="eyebrow" style={{ color: 'var(--color-bg)', borderColor: 'rgba(255,255,255,0.2)' }}>Private Sale</span>
             <h2 style={{ color: 'var(--color-bg)', marginBottom: 'var(--space-md)' }}>The Archive Event</h2>
             <p style={{ color: 'rgba(253, 251, 247, 0.8)', marginBottom: 'var(--space-xl)', maxWidth: '400px' }}>
               Enjoy up to 30% off selected pieces from our previous collections. An opportunity to invest in enduring design.
             </p>
             <Link to="/collection" className="btn-primary" style={{ backgroundColor: 'var(--color-bg)', color: 'var(--color-primary)' }}>
               Shop the Event
+              <span className="btn-icon-wrapper" style={{ backgroundColor: 'var(--color-primary)', color: 'var(--color-bg)' }}>
+                <ArrowRight size={15} strokeWidth={1.5} />
+              </span>
             </Link>
           </div>
         </div>

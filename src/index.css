@@ -776,6 +776,14 @@ img { max-width: 100%; height: auto; display: block; }
   letter-spacing: 0.05em;
 }
 
+@media (max-width: 767px) {
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-lg);
+  }
+}
+
 /* ========= SECTION HEADER ========= */
 .section-header {
   display: flex;
