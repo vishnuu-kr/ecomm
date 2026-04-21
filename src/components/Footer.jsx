@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight, Instagram, Twitter } from 'lucide-react';
+import FoundreePill from './FoundreePill';
 
 export default function Footer() {
   return (
@@ -75,7 +76,7 @@ export default function Footer() {
 
           <div className="footer-bottom">
             <p>&copy; {new Date().getFullYear()} Aura Apparel</p>
-            <p>Crafted with intent</p>
+            <FoundreePill />
           </div>
         </div>
       </div>

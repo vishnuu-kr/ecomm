@@ -1,0 +1,109 @@
+/* Import Inter font */
+@import url('https://cdn.fontsource.org/font/inter/400.css');
+@import url('https://cdn.fontsource.org/font/inter/500.css');
+
+.foundree-pill-wrapper {
+  position: relative;
+  display: inline-flex;
+}
+
+.foundree-pill {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 22px;
+  
+  /* iOS Dark Surface Color - slightly darker to blend with footer */
+  background: linear-gradient(
+    180deg,
+    #242426 0%,
+    #171719 50%,
+    #0E0E10 100%
+  );
+  
+  /* Pill Shape */
+  border-radius: 999px;
+  
+  /* Complex Shadow Stack for iOS-style depth natively scaled */
+  box-shadow:
+    /* Soft ambient shadow */
+    0 6px 14px rgba(0, 0, 0, 0.22),
+    0 3px 8px rgba(0, 0, 0, 0.14),
+    /* Sharp rim shadow */
+    0 1px 2px rgba(0, 0, 0, 0.15);
+  
+  /* Subtle outer stroke */
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  
+  cursor: pointer;
+  user-select: none;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  text-decoration: none;
+}
+
+/* Hover Effect - subtle lift */
+.foundree-pill:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 8px 18px rgba(0, 0, 0, 0.26),
+    0 4px 10px rgba(0, 0, 0, 0.18),
+    0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+/* Bevel & Emboss Effects */
+.foundree-pill::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  /* Top highlight (Bevel) */
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  /* Bottom shadow (Emboss) */
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  box-shadow: 
+    inset 0 1px 1px rgba(255, 255, 255, 0.08),
+    inset 0 -1px 3px rgba(0, 0, 0, 0.25);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Glossy Reflection on top half */
+.foundree-pill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  border-radius: 999px 999px 100% 100% / 100% 100% 40% 40%;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.06) 0%,
+    rgba(255, 255, 255, 0.02) 45%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+.foundree-pill-text {
+  position: relative;
+  z-index: 2;
+  
+  /* Typography */
+  font-family: var(--font-body), 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  
+  /* White text */
+  color: #ffffff;
+  
+  /* Text Emboss */
+  text-shadow: 
+    0 1px 2px rgba(0, 0, 0, 0.4),
+    0 -0.5px 0.5px rgba(255, 255, 255, 0.05);
+}
